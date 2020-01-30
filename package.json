@@ -2,10 +2,22 @@
   "name": "frontend-project-lvl1",
   "version": "1.0.0",
   "description": "Учебный проект Hexlet Игры разума",
-  "main": "index.js",
+  "homepage": "https://github.com/juliaovod/frontend-project-lvl1#readme",
+  "bugs": {
+    "url": "https://github.com/juliaovod/frontend-project-lvl1/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juliaovod/frontend-project-lvl1.git"
+  },
+  "license": "ISC",
+  "author": "Julia Ovod <ovoddev@gmail.com>",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "brain-games": "bin/brain-games.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
+  }
 }
