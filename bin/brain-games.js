@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// TODO: Should be import from '..'
+// https://nodejs.org/api/esm.html#esm_mandatory_file_extensions
 import greeting from '../src/index.js';
 
 console.log('Welcome to the Brain Games!');

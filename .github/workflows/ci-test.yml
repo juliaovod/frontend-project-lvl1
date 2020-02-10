@@ -1,4 +1,4 @@
-name: CI
+name: CI test
 
 on: [push]
 
@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: ESLint
+      - name: Lint
         run: make lint
