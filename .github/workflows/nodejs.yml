@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [13.x]
+        node-version: [13.x]
 
     steps:
       - name: Install dependencies
