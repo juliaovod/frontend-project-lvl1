@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      matix:
+      matrix:
         node: [13.x]
 
     steps:
