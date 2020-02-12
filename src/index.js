@@ -10,6 +10,11 @@ export const greeting = () => {
 };
 
 const gameEven = (userName, atempts) => {
+  if (atempts === 0) {
+    console.log(`Congratulations, ${userName}!`);
+    return;
+  }
+
   const isEven = (num) => num % 2 === 0;
 
   const num = _.random(0, 100);
@@ -26,10 +31,6 @@ const gameEven = (userName, atempts) => {
       "yes" is wrong answer ;(. Correct answer was "no".
       Let's try again, ${userName}!
     `);
-  }
-
-  if (atempts === 0) {
-    console.log(`Congratulations, ${userName}!`);
   }
 };
 
