@@ -28,10 +28,10 @@ export const checkParity = () => {
     }
 
     const num = random(0, 100);
-    console.log('Question: ', num);
+    console.log('Question:', num);
 
     const response = readlineSync.question();
-    console.log('Your response: ', response);
+    console.log('Your response:', response);
 
     const isCorrectResponse = (isEven(num) && response === 'yes') || (!isEven(num) && response === 'no');
 
