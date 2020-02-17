@@ -2,45 +2,44 @@ import readlineSync from 'readline-sync';
 
 import isEven from './utils/is-even.js';
 import random from './utils/random.js';
-import stdout from './log/sdtout.js';
 
-export const welcomeMessage = () => stdout('Welcome to the Brain Games!');
+export const welcomeMessage = () => console.log('Welcome to the Brain Games!');
 
 export const getUserName = () => {
-  const message = 'May I have your name?';
+  const message = 'May I have your name? ';
   return readlineSync.question(message);
 };
 
 export const greetUser = () => {
   const username = getUserName();
-  stdout('Hello,', username, '!');
+  console.log(`Hello, ${username}!`);
 };
 
 export const checkParity = () => {
   const username = getUserName();
-  stdout('Hello,', username, '!');
+  console.log(`Hello, ${username}!`);
 
-  stdout('Answer "yes" if the number is even, otherwise response "no".');
+  console.log('Answer "yes" if the number is even, otherwise response "no".');
 
-  const game = (atempts) => {
-    if (atempts === 0) {
-      stdout('Congratulations, ', username, '!');
+  const game = (attempts) => {
+    if (attempts === 0) {
+      console.log(`Congratulations, ${username}!`);
       return;
     }
 
     const num = random(0, 100);
-    stdout('Question: ', num);
+    console.log('Question: ', num);
 
     const response = readlineSync.question();
-    stdout('Your response: ', response);
+    console.log('Your response: ', response);
 
     const isCorrectResponse = (isEven(num) && response === 'yes') || (!isEven(num) && response === 'no');
 
     if (isCorrectResponse) {
-      stdout('Correct!');
-      game(atempts - 1);
+      console.log('Correct!');
+      game(attempts - 1);
     } else {
-      stdout('"yes" is wrong response ;(. Correct response was "no". \n', 'Let\'s try again,', username, '!');
+      console.log(`"yes" is wrong response ;(. Correct response was "no".\nLet's try again, ${username}!`);
     }
   };
 
