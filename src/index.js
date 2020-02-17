@@ -38,7 +38,7 @@ export const checkParity = () => {
 
     if (isCorrectResponse) {
       stdout('Correct!');
-      game(username, atempts - 1);
+      game(atempts - 1);
     } else {
       stdout('"yes" is wrong response ;(. Correct response was "no". \n', 'Let\'s try again,', username, '!');
     }
