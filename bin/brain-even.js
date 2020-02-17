@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { isEvenNum } from '../src/index.js';
+import { checkParity, welcomeMessage } from '../src/index.js';
 
-console.log('Welcome to the Brain Games!');
+welcomeMessage();
 
-isEvenNum();
+checkParity();

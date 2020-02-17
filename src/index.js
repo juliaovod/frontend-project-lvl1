@@ -1,44 +1,48 @@
 import readlineSync from 'readline-sync';
 
-import _ from 'lodash';
+import isEven from './utils/is-even.js';
+import random from './utils/random.js';
+import stdout from './log/sdtout.js';
 
-import getUserName from './utils/get-user-name.js';
+export const welcomeMessage = () => stdout('Welcome to the Brain Games!');
 
-export const greeting = () => {
-  const userName = getUserName();
-  console.log(`Hello, ${userName}!`);
+export const getUserName = () => {
+  const message = 'May I have your name?';
+  return readlineSync.question(message);
 };
 
-const gameEven = (userName, atempts) => {
-  if (atempts === 0) {
-    console.log(`Congratulations, ${userName}!`);
-    return;
-  }
-
-  const isEven = (num) => num % 2 === 0;
-
-  const num = _.random(0, 100);
-  console.log(`Question: ${num}`);
-
-  const answer = readlineSync.question();
-  console.log(`Your answer: ${answer}`);
-
-  if ((isEven(num) && answer === 'yes') || (!isEven(num) && answer === 'no')) {
-    console.log('Correct!');
-    gameEven(userName, atempts - 1);
-  } else {
-    console.log(`
-      "yes" is wrong answer ;(. Correct answer was "no".
-      Let's try again, ${userName}!
-    `);
-  }
+export const greetUser = () => {
+  const username = getUserName();
+  stdout('Hello,', username, '!');
 };
 
-export const isEvenNum = () => {
-  const userName = getUserName();
-  console.log(`Hello, ${userName}!`);
+export const checkParity = () => {
+  const username = getUserName();
+  stdout('Hello,', username, '!');
 
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  stdout('Answer "yes" if the number is even, otherwise response "no".');
 
-  gameEven(userName, 3);
+  const game = (atempts) => {
+    if (atempts === 0) {
+      stdout('Congratulations, ', username, '!');
+      return;
+    }
+
+    const num = random(0, 100);
+    stdout('Question: ', num);
+
+    const response = readlineSync.question();
+    stdout('Your response: ', response);
+
+    const isCorrectResponse = (isEven(num) && response === 'yes') || (!isEven(num) && response === 'no');
+
+    if (isCorrectResponse) {
+      stdout('Correct!');
+      game(username, atempts - 1);
+    } else {
+      stdout('"yes" is wrong response ;(. Correct response was "no". \n', 'Let\'s try again,', username, '!');
+    }
+  };
+
+  game(3);
 };

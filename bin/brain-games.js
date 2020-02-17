@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { greeting } from '../src/index.js';
+import { greetUser, welcomeMessage } from '../src/index.js';
 
-console.log('Welcome to the Brain Games!');
+welcomeMessage();
 
-greeting();
+greetUser();
