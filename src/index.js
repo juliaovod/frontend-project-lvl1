@@ -21,7 +21,7 @@ export const checkParity = () => {
 
   console.log('Answer "yes" if the number is even, otherwise response "no".');
 
-  const game = (attempts) => {
+  const iter = (attempts) => {
     if (attempts === 0) {
       console.log(`Congratulations, ${username}!`);
       return;
@@ -37,11 +37,11 @@ export const checkParity = () => {
 
     if (isCorrectResponse) {
       console.log('Correct!');
-      game(attempts - 1);
+      iter(attempts - 1);
     } else {
       console.log(`"yes" is wrong response ;(. Correct response was "no".\nLet's try again, ${username}!`);
     }
   };
 
-  game(3);
+  iter(3);
 };
