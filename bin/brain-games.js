@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import { greetUser, welcomeMessage } from '../src/index.js';
-
-welcomeMessage();
+import greetUser from '../src/cli.js';
 
 greetUser();
