@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import _ from 'lodash';
 import promptly from 'promptly';
 
