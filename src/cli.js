@@ -4,12 +4,11 @@ export const stdout = (...args) => {
   console.log(...args);
 };
 
-export default async () => {
-  stdout('Welcome to the Brain Games! \nMay I have your name?');
+export const greetPlayer = async () => {
+  stdout('Welcome to the Brain Games!');
 
-  const name = await promptly.prompt('Your answer: ');
-
-  stdout('Hello, ', name);
+  const name = await promptly.prompt('May I have your name?: ');
+  stdout(`Hello, ${name}!`);
 
   return name;
 };
