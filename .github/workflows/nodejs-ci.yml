@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies
-        run: make ci
+        run: make install
 
       - name: Lint JavaScript
         run: make lint
