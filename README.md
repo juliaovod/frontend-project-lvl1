@@ -6,3 +6,7 @@
 # Brain Games
 
 An educational project of «Frontend Developer» course of Hexlet.
+
+## Brain Even
+
+[![asciicast](https://asciinema.org/a/qbCbMk8L9jQn7mDKnbzBh8bBM.svg)](https://asciinema.org/a/qbCbMk8L9jQn7mDKnbzBh8bBM)
