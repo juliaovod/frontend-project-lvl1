@@ -7,6 +7,6 @@
 
 An educational project of «Frontend Developer» course of Hexlet.
 
-## Brain Even
+Game asciicasts:
 
-[![asciicast](https://asciinema.org/a/qbCbMk8L9jQn7mDKnbzBh8bBM.svg)](https://asciinema.org/a/qbCbMk8L9jQn7mDKnbzBh8bBM)
+1. [brain-even](https://asciinema.org/a/qbCbMk8L9jQn7mDKnbzBh8bBM)
