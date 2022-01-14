@@ -29,10 +29,9 @@ const getExpressionResult = (expressionStr) => {
   return String(result);
 };
 
-const MAX_RANDOM_NUMBER = 50;
 const generateExpression = () => {
-  const x = getRandomNumber(MAX_RANDOM_NUMBER);
-  const y = getRandomNumber(MAX_RANDOM_NUMBER);
+  const x = getRandomNumber();
+  const y = getRandomNumber();
 
   const operator = getRandomOperator();
 
