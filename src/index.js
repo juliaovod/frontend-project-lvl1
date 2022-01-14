@@ -11,7 +11,7 @@ import {
 const GAME_MAX_ROUNDS = 3;
 
 const isLastRound = (round) => round === GAME_MAX_ROUNDS;
-const isWrongAnswer = (userAnswer, rightAnswer) => userAnswer !== rightAnswer;
+const isWrongAnswer = (userAnswer, rightAnswer) => String(userAnswer) !== String(rightAnswer);
 
 const startGame = (gameInstruction, getQuestion, getRightAnswer) => {
   const userName = getUserName();
