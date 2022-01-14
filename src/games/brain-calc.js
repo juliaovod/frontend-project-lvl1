@@ -7,20 +7,20 @@ const getRandomOperator = () => OPERATORS[getRandomNumber(OPERATORS.length)];
 const getExpressionResult = (expressionStr) => {
   const expressionArr = expressionStr.split(' ');
 
-  const [a, , b] = expressionArr.map(Number);
+  const [x, , y] = expressionArr.map(Number);
   const [, operator] = expressionArr;
 
   let result = null;
 
   switch (operator) {
     case '*':
-      result = a * b;
+      result = x * y;
       break;
     case '+':
-      result = a + b;
+      result = x + y;
       break;
     case '-':
-      result = a >= b ? a - b : b - a;
+      result = x - y;
       break;
     default:
       return result;
