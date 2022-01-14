@@ -1,49 +1,50 @@
 import startGame from '../index.js';
 import { getRandomNumber } from '../utils.js';
 
-const OPERATORS = {
-  MINUS: '-',
-  MULTIPLY: '*',
-  PLUS: '+',
-};
+const OPERATORS = ['*', '+', '-'];
+const getRandomOperator = () => OPERATORS[getRandomNumber(OPERATORS.length)];
 
-const getRandomOperator = () => Object.values(OPERATORS)[getRandomNumber(2)];
-
-const calcExpression = (expressionStr) => {
+const getExpressionResult = (expressionStr) => {
   const expressionArr = expressionStr.split(' ');
 
   const [a, , b] = expressionArr.map(Number);
   const [, operator] = expressionArr;
 
+  let result = null;
+
   switch (operator) {
-    case OPERATORS.PLUS:
-      return a + b;
-    case OPERATORS.MINUS:
-      return a >= b ? a - b : b - a;
-    case OPERATORS.MULTIPLY:
-      return a * b;
+    case '*':
+      result = a * b;
+      break;
+    case '+':
+      result = a + b;
+      break;
+    case '-':
+      result = a >= b ? a - b : b - a;
+      break;
     default:
-      return null;
+      return result;
   }
+
+  return String(result);
 };
 
 const MAX_RANDOM_NUMBER = 50;
-const makeExpression = () => {
-  const operands = [getRandomNumber(MAX_RANDOM_NUMBER), getRandomNumber(MAX_RANDOM_NUMBER)];
-
-  operands.sort((a, b) => b - a);
+const generateExpression = () => {
+  const x = getRandomNumber(MAX_RANDOM_NUMBER);
+  const y = getRandomNumber(MAX_RANDOM_NUMBER);
 
   const operator = getRandomOperator();
 
-  return operands.join(` ${operator} `);
+  return `${x} ${operator} ${y}`;
 };
 
 const gameInstruction = 'What is the result of the expression?';
 
 const startBrainCalc = () => startGame(
   gameInstruction,
-  makeExpression,
-  calcExpression,
+  generateExpression,
+  getExpressionResult,
 );
 
 export default startBrainCalc;
