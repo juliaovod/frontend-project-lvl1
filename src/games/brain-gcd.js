@@ -1,7 +1,7 @@
 import startGame from '../index.js';
 import { getRandomNumber } from '../utils.js';
 
-const getGreatestCommonDivisor = (x = getRandomNumber(), y = getRandomNumber()) => {
+const getGreatestCommonDivisor = (x, y) => {
   let counter = x > y ? x : y;
 
   while (counter !== 1) {
