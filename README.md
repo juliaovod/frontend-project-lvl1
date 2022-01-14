@@ -5,9 +5,9 @@
 
 # Brain Games
 
-An educational project of «Frontend Developer» course of Hexlet.
+An educational project of [Frontend](https://ru.hexlet.io/programs/frontend) program of [Hexlet](https://ru.hexlet.io/).
 
-Game asciicasts:
+Game [asciicasts](https://asciinema.org/):
 
 1. [brain-even](https://asciinema.org/a/qbCbMk8L9jQn7mDKnbzBh8bBM)
 2. [brain-calc](https://asciinema.org/a/lrfZmDnXsC1gR0KVY43vWa8Iz)
