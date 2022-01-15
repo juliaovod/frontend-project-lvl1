@@ -13,10 +13,10 @@ const GAME_MAX_ROUNDS = 3;
 const isLastRound = (round) => round === GAME_MAX_ROUNDS;
 const isWrongAnswer = (userAnswer, rightAnswer) => userAnswer !== rightAnswer;
 
-const startGame = (gameInstruction, getQuestion, getRightAnswer) => {
+const startGame = (gameInstructions, getQuestion, getRightAnswer) => {
   const userName = getUserName();
 
-  console.log(gameInstruction);
+  console.log(gameInstructions);
 
   for (let round = 1; round <= GAME_MAX_ROUNDS; round += 1) {
     const roundQuestion = getQuestion();

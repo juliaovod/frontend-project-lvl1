@@ -1,5 +1,5 @@
 import startGame from '../index.js';
-import { getRandomNumber } from '../utils.js';
+import { getRandomNumber, parseUserInput } from '../utils.js';
 
 const getGreatestCommonDivisor = (x, y) => {
   let counter = x > y ? x : y;
@@ -17,15 +17,17 @@ const getGreatestCommonDivisor = (x, y) => {
 
 const generateExpression = () => `${getRandomNumber()} ${getRandomNumber()}`;
 
-const gameInstruction = 'Find the greatest common divisor of given numbers.';
+const gameInstructions = 'Find the greatest common divisor of given numbers.';
 
-const getRightAnswer = (expressionStr) => {
-  const [x, y] = expressionStr.split(' ').map(Number);
-  return String(getGreatestCommonDivisor(x, y));
+const getRightAnswer = (expression) => {
+  const [x, y] = parseUserInput(expression).map(Number);
+  const greatestCommonDivisor = getGreatestCommonDivisor(x, y);
+
+  return String(greatestCommonDivisor);
 };
 
 const startBrainGcd = () => startGame(
-  gameInstruction,
+  gameInstructions,
   generateExpression,
   getRightAnswer,
 );

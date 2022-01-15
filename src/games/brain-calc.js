@@ -1,11 +1,11 @@
 import startGame from '../index.js';
-import { getRandomNumber } from '../utils.js';
+import { getRandomNumber, parseUserInput } from '../utils.js';
 
 const OPERATORS = ['*', '+', '-'];
 const getRandomOperator = () => OPERATORS[getRandomNumber(OPERATORS.length)];
 
-const getExpressionResult = (expressionStr) => {
-  const expressionArr = expressionStr.split(' ');
+const getExpressionResult = (expression) => {
+  const expressionArr = parseUserInput(expression);
 
   const [x, , y] = expressionArr.map(Number);
   const [, operator] = expressionArr;
@@ -38,10 +38,10 @@ const generateExpression = () => {
   return `${x} ${operator} ${y}`;
 };
 
-const gameInstruction = 'What is the result of the expression?';
+const gameInstructions = 'What is the result of the expression?';
 
 const startBrainCalc = () => startGame(
-  gameInstruction,
+  gameInstructions,
   generateExpression,
   getExpressionResult,
 );
