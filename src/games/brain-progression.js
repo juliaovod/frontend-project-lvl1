@@ -13,7 +13,7 @@ const generateProgression = () => {
   const startWithSecondNumber = 2;
 
   for (let i = startWithSecondNumber; i <= randomLength; i += 1) {
-    const number = firstNumber + (i - 1) * diff;
+    const number = firstNumber + ((i - 1) * diff);
     progression.push(number);
   }
 
