@@ -5,12 +5,12 @@ export const isEven = (number) => number % 2 === 0;
 
 const gameInstructions = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const getRightAnswer = (number) => (isEven(Number(number)) ? 'yes' : 'no');
+const getExpectedAnswer = (number) => (isEven(Number(number)) ? 'yes' : 'no');
 
 const startBrainEven = () => startGame(
   gameInstructions,
   getRandomNumber,
-  getRightAnswer,
+  getExpectedAnswer,
 );
 
 export default startBrainEven;

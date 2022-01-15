@@ -24,25 +24,24 @@ const generateProgressionWithGap = () => {
   const progression = generateProgression();
 
   const randomIndex = getRandomNumber(0, progression.length - 1);
-  return progression.map((number, index) => (index === randomIndex ? progressionGap : number)).join(' ');
+  progression[randomIndex] = progressionGap;
+
+  return progression;
 };
 
-const getRightAnswer = (progression) => {
-  const parsedProgression = parseUserInput(progression)
-    .map((value) => (value === progressionGap ? value : Number(value)));
-
-  const gapIndex = parsedProgression.indexOf(progressionGap);
+const getMissedNumberInProgression = (progression) => {
+  const gapIndex = progression.indexOf(progressionGap);
 
   let missedNumber;
 
-  if (gapIndex === 0 || gapIndex === parsedProgression.length - 1) {
-    const [, x, y] = parsedProgression;
+  if (gapIndex === 0 || gapIndex === progression.length - 1) {
+    const [, x, y] = progression;
     const diff = y - x;
 
     missedNumber = x - diff;
   } else {
-    const x = parsedProgression[gapIndex - 1];
-    const y = parsedProgression[gapIndex + 1];
+    const x = progression[gapIndex - 1];
+    const y = progression[gapIndex + 1];
     const diff = (y - x) / 2;
 
     missedNumber = x + diff;
@@ -53,10 +52,23 @@ const getRightAnswer = (progression) => {
 
 const gameInstructions = 'What number is missing in the progression?';
 
+const getQuestion = () => {
+  const progression = generateProgressionWithGap();
+  return progression.join(' ');
+};
+
+const getExpectedAnswer = (progression) => {
+  const parsedProgression = parseUserInput(progression)
+    .map((value) => (value === progressionGap ? value : Number(value)));
+
+  const expectedAnswer = getMissedNumberInProgression(parsedProgression);
+  return String(expectedAnswer);
+};
+
 const startBrainProgression = () => startGame(
   gameInstructions,
-  generateProgressionWithGap,
-  getRightAnswer,
+  getQuestion,
+  getExpectedAnswer,
 );
 
 export default startBrainProgression;

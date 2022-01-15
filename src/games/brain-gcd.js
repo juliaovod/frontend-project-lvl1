@@ -1,35 +1,35 @@
 import startGame from '../index.js';
 import { getRandomNumber, parseUserInput } from '../utils.js';
 
-const getGreatestCommonDivisor = (x, y) => {
-  let counter = x > y ? x : y;
+const getGcd = (x, y) => {
+  let divisor = x > y ? x : y;
 
-  while (counter !== 1) {
-    if (x % counter === 0 && y % counter === 0) {
-      return counter;
+  while (divisor !== 1) {
+    if (x % divisor === 0 && y % divisor === 0) {
+      return divisor;
     }
 
-    counter -= 1;
+    divisor -= 1;
   }
 
-  return counter;
+  return divisor;
 };
-
-const generateExpression = () => `${getRandomNumber()} ${getRandomNumber()}`;
 
 const gameInstructions = 'Find the greatest common divisor of given numbers.';
 
-const getRightAnswer = (expression) => {
-  const [x, y] = parseUserInput(expression).map(Number);
-  const greatestCommonDivisor = getGreatestCommonDivisor(x, y);
+const getQuestion = () => `${getRandomNumber()} ${getRandomNumber()}`;
 
-  return String(greatestCommonDivisor);
+const getExpectedAnswer = (expression) => {
+  const [x, y] = parseUserInput(expression).map(Number);
+  const divisor = getGcd(x, y);
+
+  return String(divisor);
 };
 
 const startBrainGcd = () => startGame(
   gameInstructions,
-  generateExpression,
-  getRightAnswer,
+  getQuestion,
+  getExpectedAnswer,
 );
 
 export default startBrainGcd;

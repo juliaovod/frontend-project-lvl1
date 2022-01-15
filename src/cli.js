@@ -27,6 +27,6 @@ export const printTryAgain = (userName) => {
   console.log(`Let's try again, ${userName}!`);
 };
 
-export const printRightAnswer = (wrongAnswer, rightAnswer) => {
-  console.log(`'${wrongAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
+export const printExpectedAnswer = (wrongAnswer, expectedAnswer) => {
+  console.log(`'${wrongAnswer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'.`);
 };

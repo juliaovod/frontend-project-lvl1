@@ -23,12 +23,12 @@ const isPrime = (number) => {
   return counter === number;
 };
 
-const getRightAnswer = (number) => (isPrime(Number(number)) ? 'yes' : 'no');
+const getExpectedAnswer = (number) => (isPrime(Number(number)) ? 'yes' : 'no');
 
 const startBrainPrime = () => startGame(
   gameInstructions,
   getRandomNumber,
-  getRightAnswer,
+  getExpectedAnswer,
 );
 
 export default startBrainPrime;

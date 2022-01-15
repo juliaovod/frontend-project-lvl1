@@ -3,17 +3,17 @@ import {
   getUserName,
   printCongratulations,
   printCorrect,
+  printExpectedAnswer,
   printQuestion,
   printTryAgain,
-  printRightAnswer,
 } from './cli.js';
 
 const GAME_MAX_ROUNDS = 3;
 
 const isLastRound = (round) => round === GAME_MAX_ROUNDS;
-const isWrongAnswer = (userAnswer, rightAnswer) => userAnswer !== rightAnswer;
+const isWrongAnswer = (userAnswer, expectedAnswer) => userAnswer !== expectedAnswer;
 
-const startGame = (gameInstructions, getQuestion, getRightAnswer) => {
+const startGame = (gameInstructions, getQuestion, getExpectedAnswer) => {
   const userName = getUserName();
 
   console.log(gameInstructions);
@@ -23,11 +23,11 @@ const startGame = (gameInstructions, getQuestion, getRightAnswer) => {
     printQuestion(roundQuestion);
 
     const userAnswer = getUserAnswer();
-    const rightAnswer = getRightAnswer(roundQuestion);
+    const expectedAnswer = getExpectedAnswer(roundQuestion);
 
-    if (isWrongAnswer(userAnswer, rightAnswer)) {
+    if (isWrongAnswer(userAnswer, expectedAnswer)) {
       printTryAgain(userName);
-      printRightAnswer(userAnswer, rightAnswer);
+      printExpectedAnswer(userAnswer, expectedAnswer);
 
       return;
     }
