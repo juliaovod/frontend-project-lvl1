@@ -14,3 +14,16 @@ There are five console games and their [asciicasts](https://asciinema.org/):
 3. [brain-gcd](https://asciinema.org/a/Lh80Pxo2iFWxoHXXxCivrUVfF)
 4. [brain-progression](https://asciinema.org/a/247dPdhm4ew4AQFVacJWBBNxS)
 5. [brain-prime](https://asciinema.org/a/I0M6ONGYfcFGgk7NBW9I8NsOB)
+
+## Develop
+
+```bash
+# Install dependencies
+npm install
+
+# Install game globally
+npm link
+
+# Run any game in console, for example brain-progressive
+brain-progressive
+```
