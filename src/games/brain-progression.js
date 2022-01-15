@@ -47,7 +47,7 @@ const getMissedNumberInProgression = (progression) => {
     missedNumber = x + diff;
   }
 
-  return String(missedNumber);
+  return missedNumber;
 };
 
 const gameInstructions = 'What number is missing in the progression?';
