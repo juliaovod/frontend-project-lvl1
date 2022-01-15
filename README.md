@@ -21,7 +21,7 @@ There are five console games and their [asciicasts](https://asciinema.org/):
 # Install dependencies
 npm install
 
-# Install game globally
+# Install games globally
 npm link
 
 # Run any game in console, for example brain-progressive
