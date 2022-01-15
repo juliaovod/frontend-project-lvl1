@@ -13,3 +13,4 @@ There are five games and their [asciicasts](https://asciinema.org/):
 2. [brain-calc](https://asciinema.org/a/lrfZmDnXsC1gR0KVY43vWa8Iz)
 3. [brain-gcd](https://asciinema.org/a/Lh80Pxo2iFWxoHXXxCivrUVfF)
 4. [brain-progression](https://asciinema.org/a/247dPdhm4ew4AQFVacJWBBNxS)
+5. [brain-prime](https://asciinema.org/a/I0M6ONGYfcFGgk7NBW9I8NsOB)
