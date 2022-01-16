@@ -1,6 +1,8 @@
 import startGame from '../index.js';
 import { getRandomNumber, parseUserInput } from '../utils.js';
 
+// Helpers
+
 const getGcd = (x, y) => {
   let divisor = x > y ? x : y;
 
@@ -14,6 +16,8 @@ const getGcd = (x, y) => {
 
   return divisor;
 };
+
+// Game
 
 const gameInstructions = 'Find the greatest common divisor of given numbers.';
 

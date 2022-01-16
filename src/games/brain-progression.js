@@ -1,7 +1,9 @@
 import startGame from '../index.js';
 import { getRandomNumber, parseUserInput } from '../utils.js';
 
-const progressionGap = '..';
+// Helpers
+
+const PROGRESSION_GAP = '..';
 
 const generateProgression = () => {
   const progression = [getRandomNumber()];
@@ -20,18 +22,16 @@ const generateProgression = () => {
   return progression;
 };
 
-const generateProgressionWithGap = () => {
+const generateProgressionWithGap = (gapValue) => {
   const progression = generateProgression();
 
   const randomIndex = getRandomNumber(0, progression.length - 1);
-  progression[randomIndex] = progressionGap;
+  progression[randomIndex] = gapValue;
 
   return progression;
 };
 
-const getMissedNumberInProgression = (progression) => {
-  const gapIndex = progression.indexOf(progressionGap);
-
+const getMissedNumberInProgression = (progression, gapIndex) => {
   let missedNumber;
 
   if (gapIndex === 0 || gapIndex === progression.length - 1) {
@@ -50,18 +50,22 @@ const getMissedNumberInProgression = (progression) => {
   return missedNumber;
 };
 
+// Game
+
 const gameInstructions = 'What number is missing in the progression?';
 
 const getQuestion = () => {
-  const progression = generateProgressionWithGap();
+  const progression = generateProgressionWithGap(PROGRESSION_GAP);
   return progression.join(' ');
 };
 
 const getExpectedAnswer = (progression) => {
   const parsedProgression = parseUserInput(progression)
-    .map((value) => (value === progressionGap ? value : Number(value)));
+    .map((value) => (value === PROGRESSION_GAP ? value : Number(value)));
 
-  const expectedAnswer = getMissedNumberInProgression(parsedProgression);
+  const gapIndex = parsedProgression.indexOf(PROGRESSION_GAP);
+  const expectedAnswer = getMissedNumberInProgression(parsedProgression, gapIndex);
+
   return String(expectedAnswer);
 };
 

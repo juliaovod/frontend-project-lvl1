@@ -1,6 +1,8 @@
 import startGame from '../index.js';
 import { getRandomNumber, parseUserInput } from '../utils.js';
 
+// Helpers
+
 const OPERATORS = ['*', '+', '-'];
 const getRandomOperator = () => OPERATORS[getRandomNumber(0, OPERATORS.length)];
 
@@ -24,8 +26,6 @@ const calcExpression = (x, y, operator) => {
   return result;
 };
 
-const gameInstructions = 'What is the result of the expression?';
-
 const generateExpression = () => {
   const x = getRandomNumber();
   const y = getRandomNumber();
@@ -34,6 +34,10 @@ const generateExpression = () => {
 
   return [x, y, operator];
 };
+
+// Game
+
+const gameInstructions = 'What is the result of the expression?';
 
 const getQuestion = () => {
   const [x, y, operator] = generateExpression();
