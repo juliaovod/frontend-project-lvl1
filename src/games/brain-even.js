@@ -3,7 +3,7 @@ import { getRandomNumber } from '../utils.js';
 
 // Helpers
 
-export const isEven = (number) => number % 2 === 0;
+const isEven = (number) => number % 2 === 0;
 
 // Game
 
