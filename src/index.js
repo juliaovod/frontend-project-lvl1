@@ -1,11 +1,11 @@
 import {
-  getUserAnswer,
-  getUserName,
+  askUser,
   printCongratulations,
   printCorrect,
   printExpectedAnswer,
   printQuestion,
   printTryAgain,
+  setUserName,
 } from './cli.js';
 
 const GAME_MAX_ROUNDS = 3;
@@ -14,7 +14,7 @@ const isLastRound = (round) => round === GAME_MAX_ROUNDS;
 const isWrongAnswer = (userAnswer, expectedAnswer) => userAnswer !== expectedAnswer;
 
 const startGame = (gameInstructions, getQuestion, getExpectedAnswer) => {
-  const userName = getUserName();
+  const userName = setUserName();
 
   console.log(gameInstructions);
 
@@ -22,7 +22,7 @@ const startGame = (gameInstructions, getQuestion, getExpectedAnswer) => {
     const roundQuestion = getQuestion();
     printQuestion(roundQuestion);
 
-    const userAnswer = getUserAnswer();
+    const userAnswer = askUser();
     const expectedAnswer = getExpectedAnswer(roundQuestion);
 
     if (isWrongAnswer(userAnswer, expectedAnswer)) {
