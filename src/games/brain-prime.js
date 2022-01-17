@@ -3,24 +3,22 @@ import { getRandomNumber } from '../utils.js';
 
 // Helpers
 
-const isPrime = (number) => {
-  if (number <= 3) {
-    return number > 1;
+const isPrime = (num) => {
+  if (num <= 3) {
+    return num > 1;
   }
-
-  if (number % 2 === 0 || number % 3 === 0) {
+  if (num % 2 === 0 || num % 3 === 0) {
     return false;
   }
 
-  let counter = number;
-
-  for (let i = number - 1; i > 1; i -= 1) {
-    if (number % i === 0) {
-      counter += 1;
+  let counter = num;
+  for (let i = num - 1; i > 1; i -= 1) {
+    if (num % i === 0) {
+      counter -= 1;
     }
   }
 
-  return counter === number;
+  return counter === num;
 };
 
 // Game
