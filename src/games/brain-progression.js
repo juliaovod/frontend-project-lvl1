@@ -5,49 +5,24 @@ import getRandomNumber from '../get-random-number.js';
 
 const PROGRESSION_GAP = '..';
 
-const generateProgression = () => {
-  const progression = [getRandomNumber()];
-  const randomLength = getRandomNumber(5, 10);
+const generateProgression = (startFrom, diff, length) => {
+  const progression = [startFrom];
+  const startIndex = 2;
 
-  const [firstNumber] = progression;
-  const diff = getRandomNumber(1, 5);
-
-  const startWithSecondNumber = 2;
-
-  for (let i = startWithSecondNumber; i <= randomLength; i += 1) {
-    const number = firstNumber + ((i - 1) * diff);
+  for (let i = startIndex; i <= length; i += 1) {
+    const number = startFrom + ((i - 1) * diff);
     progression.push(number);
   }
 
   return progression;
 };
 
-const generateProgressionWithGap = (gapValue) => {
-  const progression = generateProgression();
+const generateRandomProgression = () => {
+  const startFrom = getRandomNumber();
+  const diff = getRandomNumber(1, 5);
+  const length = getRandomNumber(5, 10);
 
-  const randomIndex = getRandomNumber(0, progression.length - 1);
-  progression[randomIndex] = gapValue;
-
-  return progression;
-};
-
-const getMissedNumberInProgression = (progression, gapIndex) => {
-  let missedNumber;
-
-  if (gapIndex === 0 || gapIndex === progression.length - 1) {
-    const [, x, y] = progression;
-    const diff = y - x;
-
-    missedNumber = x - diff;
-  } else {
-    const x = progression[gapIndex - 1];
-    const y = progression[gapIndex + 1];
-    const diff = (y - x) / 2;
-
-    missedNumber = x + diff;
-  }
-
-  return missedNumber;
+  return generateProgression(startFrom, diff, length);
 };
 
 // Game
@@ -55,13 +30,14 @@ const getMissedNumberInProgression = (progression, gapIndex) => {
 const gameInstructions = 'What number is missing in the progression?';
 
 const getQuestion = () => {
-  const progression = generateProgressionWithGap(PROGRESSION_GAP);
-  const question = progression.join(' ');
+  const progression = generateRandomProgression(PROGRESSION_GAP);
 
-  const gapIndex = progression.indexOf(PROGRESSION_GAP);
-  const expectedAnswer = getMissedNumberInProgression(progression, gapIndex);
+  const randomIndex = getRandomNumber(0, progression.length - 1);
+  const expectedAnswer = progression[randomIndex];
 
-  return [question, String(expectedAnswer)];
+  progression[randomIndex] = PROGRESSION_GAP;
+
+  return [progression.join(' '), String(expectedAnswer)];
 };
 
 const startBrainProgression = () => startGame(gameInstructions, getQuestion);
