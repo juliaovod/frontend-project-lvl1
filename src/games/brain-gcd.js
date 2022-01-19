@@ -28,7 +28,7 @@ const getQuestion = () => {
   const question = `${x} ${y}`;
   const expectedAnswer = getGcd(x, y);
 
-  return [question, expectedAnswer];
+  return [question, String(expectedAnswer)];
 };
 
 const startBrainGcd = () => startGame(gameInstructions, getQuestion);
