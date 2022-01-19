@@ -45,7 +45,7 @@ const getQuestion = () => {
 
   const expectedAnswer = calcExpression(x, y, operator);
 
-  return [question, expectedAnswer];
+  return [question, String(expectedAnswer)];
 };
 
 const startBrainCalc = () => startGame(gameInstructions, getQuestion);
