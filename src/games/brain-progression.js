@@ -1,5 +1,5 @@
 import startGame from '../index.js';
-import { getRandomNumber, parseUserInput } from '../utils.js';
+import getRandomNumber from '../get-random-number.js';
 
 // Helpers
 
@@ -56,23 +56,14 @@ const gameInstructions = 'What number is missing in the progression?';
 
 const getQuestion = () => {
   const progression = generateProgressionWithGap(PROGRESSION_GAP);
-  return progression.join(' ');
+  const question = progression.join(' ');
+
+  const gapIndex = progression.indexOf(PROGRESSION_GAP);
+  const expectedAnswer = getMissedNumberInProgression(progression, gapIndex);
+
+  return [question, String(expectedAnswer)];
 };
 
-const getExpectedAnswer = (progression) => {
-  const parsedProgression = parseUserInput(progression)
-    .map((value) => (value === PROGRESSION_GAP ? value : Number(value)));
-
-  const gapIndex = parsedProgression.indexOf(PROGRESSION_GAP);
-  const expectedAnswer = getMissedNumberInProgression(parsedProgression, gapIndex);
-
-  return String(expectedAnswer);
-};
-
-const startBrainProgression = () => startGame(
-  gameInstructions,
-  getQuestion,
-  getExpectedAnswer,
-);
+const startBrainProgression = () => startGame(gameInstructions, getQuestion);
 
 export default startBrainProgression;

@@ -1,5 +1,5 @@
 import startGame from '../index.js';
-import { getRandomNumber, parseUserInput } from '../utils.js';
+import getRandomNumber from '../get-random-number.js';
 
 // Helpers
 
@@ -41,24 +41,13 @@ const gameInstructions = 'What is the result of the expression?';
 
 const getQuestion = () => {
   const [x, y, operator] = generateExpression();
-  return `${x} ${operator} ${y}`;
+  const question = `${x} ${operator} ${y}`;
+
+  const expectedAnswer = calcExpression(x, y, operator);
+
+  return [question, expectedAnswer];
 };
 
-const getExpectedAnswer = (expression) => {
-  const parsedExpression = parseUserInput(expression);
-
-  const [x, , y] = parsedExpression.map(Number);
-  const [, operator] = parsedExpression;
-
-  const result = calcExpression(x, y, operator);
-
-  return String(result);
-};
-
-const startBrainCalc = () => startGame(
-  gameInstructions,
-  getQuestion,
-  getExpectedAnswer,
-);
+const startBrainCalc = () => startGame(gameInstructions, getQuestion);
 
 export default startBrainCalc;

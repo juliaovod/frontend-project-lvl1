@@ -1,41 +1,33 @@
-import {
-  askUser,
-  printCongratulations,
-  printCorrect,
-  printExpectedAnswer,
-  printQuestion,
-  printTryAgain,
-  setUserName,
-} from './cli.js';
+import readlineSync from 'readline-sync';
+import setUserName from './cli.js';
 
 const GAME_MAX_ROUNDS = 3;
 
 const isLastRound = (round) => round === GAME_MAX_ROUNDS;
-const isWrongAnswer = (userAnswer, expectedAnswer) => userAnswer !== expectedAnswer;
 
-const startGame = (gameInstructions, getQuestion, getExpectedAnswer) => {
+const startGame = (gameInstructions, getQuestion) => {
   const userName = setUserName();
 
   console.log(gameInstructions);
 
   for (let round = 1; round <= GAME_MAX_ROUNDS; round += 1) {
-    const roundQuestion = getQuestion();
-    printQuestion(roundQuestion);
+    const [question, expectedAnswer] = getQuestion();
 
-    const userAnswer = askUser();
-    const expectedAnswer = getExpectedAnswer(roundQuestion);
+    console.log(`Question: ${question}`);
 
-    if (isWrongAnswer(userAnswer, expectedAnswer)) {
-      printTryAgain(userName);
-      printExpectedAnswer(userAnswer, expectedAnswer);
+    const userAnswer = readlineSync.question('Your answer: ');
+
+    if (userAnswer !== expectedAnswer) {
+      console.log(`Let's try again, ${userName}!`);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'.`);
 
       return;
     }
 
-    printCorrect();
+    console.log('Correct!');
 
     if (isLastRound(round)) {
-      printCongratulations(userName);
+      console.log(`Congratulations, ${userName}!`);
     }
   }
 };
