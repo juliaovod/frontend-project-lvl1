@@ -3,12 +3,11 @@ import getRandomNumber from '../get-random-number.js';
 
 // Helpers
 
-const generateProgression = (startFrom, diff, length) => {
-  const progression = [startFrom];
-  const startIndex = 2;
+const generateProgression = (initialNum, diff, length) => {
+  const progression = [];
 
-  for (let i = startIndex; i <= length; i += 1) {
-    const number = startFrom + ((i - 1) * diff);
+  for (let i = 0; i <= length; i += 1) {
+    const number = initialNum + ((i - 1) * diff);
     progression.push(number);
   }
 
@@ -16,11 +15,11 @@ const generateProgression = (startFrom, diff, length) => {
 };
 
 const generateRandomProgression = () => {
-  const startFrom = getRandomNumber();
+  const initialNum = getRandomNumber();
   const diff = getRandomNumber(1, 5);
   const length = getRandomNumber(5, 10);
 
-  return generateProgression(startFrom, diff, length);
+  return generateProgression(initialNum, diff, length);
 };
 
 // Game
