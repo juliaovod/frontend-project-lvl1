@@ -1,4 +1,4 @@
-import startGame from '../index.js';
+import playGame from '../index.js';
 import getRandomNumber from '../get-random-number.js';
 
 // Helpers
@@ -7,7 +7,7 @@ const OPERATORS = ['*', '+', '-'];
 const getRandomOperator = () => OPERATORS[getRandomNumber(0, OPERATORS.length)];
 
 const calcExpression = (x, y, operator) => {
-  let result = null;
+  let result;
 
   switch (operator) {
     case '*':
@@ -20,34 +20,27 @@ const calcExpression = (x, y, operator) => {
       result = x - y;
       break;
     default:
-      return result;
+      return null;
   }
 
   return result;
 };
 
-const generateExpression = () => {
-  const x = getRandomNumber();
-  const y = getRandomNumber();
-
-  const operator = getRandomOperator();
-
-  return [x, y, operator];
-};
-
 // Game
 
-const gameInstructions = 'What is the result of the expression?';
+const gameInstruction = 'What is the result of the expression?';
 
-const getQuestion = () => {
-  const [x, y, operator] = generateExpression();
+const getQuestionAndAnswer = () => {
+  const x = getRandomNumber();
+  const y = getRandomNumber();
+  const operator = getRandomOperator();
+
   const question = `${x} ${operator} ${y}`;
-
   const expectedAnswer = calcExpression(x, y, operator);
 
-  return [question, String(expectedAnswer)];
+  return { expectedAnswer: String(expectedAnswer), question };
 };
 
-const startBrainCalc = () => startGame(gameInstructions, getQuestion);
+const playBrainCalc = () => playGame(gameInstruction, getQuestionAndAnswer);
 
-export default startBrainCalc;
+export default playBrainCalc;

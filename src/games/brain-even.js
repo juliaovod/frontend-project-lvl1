@@ -1,4 +1,4 @@
-import startGame from '../index.js';
+import playGame from '../index.js';
 import getRandomNumber from '../get-random-number.js';
 
 // Helpers
@@ -7,15 +7,15 @@ const isEven = (number) => number % 2 === 0;
 
 // Game
 
-const gameInstructions = 'Answer "yes" if the number is even, otherwise answer "no".';
+const gameInstruction = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const getQuestion = () => {
+const getQuestionAndAnswer = () => {
   const randomNum = getRandomNumber();
   const expectedAnswer = isEven(randomNum) ? 'yes' : 'no';
 
-  return [String(randomNum), expectedAnswer];
+  return { expectedAnswer, question: String(randomNum) };
 };
 
-const startBrainEven = () => startGame(gameInstructions, getQuestion);
+const playBrainEven = () => playGame(gameInstruction, getQuestionAndAnswer);
 
-export default startBrainEven;
+export default playBrainEven;

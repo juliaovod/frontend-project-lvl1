@@ -1,4 +1,4 @@
-import startGame from '../index.js';
+import playGame from '../index.js';
 import getRandomNumber from '../get-random-number.js';
 
 // Helpers
@@ -19,18 +19,18 @@ const getGcd = (x, y) => {
 
 // Game
 
-const gameInstructions = 'Find the greatest common divisor of given numbers.';
+const gameInstruction = 'Find the greatest common divisor of given numbers.';
 
-const getQuestion = () => {
+const getQuestionAndAnswer = () => {
   const x = getRandomNumber();
   const y = getRandomNumber();
 
   const question = `${x} ${y}`;
   const expectedAnswer = getGcd(x, y);
 
-  return [question, String(expectedAnswer)];
+  return { expectedAnswer: String(expectedAnswer), question };
 };
 
-const startBrainGcd = () => startGame(gameInstructions, getQuestion);
+const playBrainGcd = () => playGame(gameInstruction, getQuestionAndAnswer);
 
-export default startBrainGcd;
+export default playBrainGcd;

@@ -1,17 +1,17 @@
 import readlineSync from 'readline-sync';
-import setUserName from './cli.js';
 
-const GAME_MAX_ROUNDS = 3;
+const GAME_ROUNDS_COUNT = 3;
 
-const isLastRound = (round) => round === GAME_MAX_ROUNDS;
+const playGame = (gameInstruction, getQuestionAndAnswer) => {
+  console.log('Welcome to the Brain Games!');
 
-const startGame = (gameInstructions, getQuestion) => {
-  const userName = setUserName();
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
 
-  console.log(gameInstructions);
+  console.log(gameInstruction);
 
-  for (let round = 1; round <= GAME_MAX_ROUNDS; round += 1) {
-    const [question, expectedAnswer] = getQuestion();
+  for (let round = 1; round <= GAME_ROUNDS_COUNT; round += 1) {
+    const { expectedAnswer, question } = getQuestionAndAnswer();
 
     console.log(`Question: ${question}`);
 
@@ -25,11 +25,9 @@ const startGame = (gameInstructions, getQuestion) => {
     }
 
     console.log('Correct!');
-
-    if (isLastRound(round)) {
-      console.log(`Congratulations, ${userName}!`);
-    }
   }
+
+  console.log(`Congratulations, ${userName}!`);
 };
 
-export default startGame;
+export default playGame;

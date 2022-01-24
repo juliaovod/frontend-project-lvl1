@@ -1,4 +1,4 @@
-import startGame from '../index.js';
+import playGame from '../index.js';
 import getRandomNumber from '../get-random-number.js';
 
 // Helpers
@@ -11,27 +11,26 @@ const isPrime = (num) => {
     return false;
   }
 
-  let counter = num;
-  for (let i = num - 1; i > 1; i -= 1) {
+  for (let i = Math.floor(num / 2); i > 1; i -= 1) {
     if (num % i === 0) {
-      counter -= 1;
+      return false;
     }
   }
 
-  return counter === num;
+  return true;
 };
 
 // Game
 
-const gameInstructions = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const gameInstruction = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const getQuestion = () => {
+const getQuestionAndAnswer = () => {
   const randomNum = getRandomNumber();
   const expectedAnswer = isPrime(randomNum) ? 'yes' : 'no';
 
-  return [String(randomNum), expectedAnswer];
+  return { expectedAnswer, question: String(randomNum) };
 };
 
-const startBrainPrime = () => startGame(gameInstructions, getQuestion);
+const playBrainPrime = () => playGame(gameInstruction, getQuestionAndAnswer);
 
-export default startBrainPrime;
+export default playBrainPrime;
