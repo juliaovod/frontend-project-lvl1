@@ -5,7 +5,7 @@
 
 # Brain Games
 
-There are five console games and their [asciicasts](https://asciinema.org/):
+There are five console games and their asciicasts:
 
 1. [brain-even](https://asciinema.org/a/qbCbMk8L9jQn7mDKnbzBh8bBM)
 2. [brain-calc](https://asciinema.org/a/lrfZmDnXsC1gR0KVY43vWa8Iz)
